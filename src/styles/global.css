@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ───── KDS Design Tokens ───── */
+:root,
+.light,
+[data-theme="light"] {
+  color-scheme: light;
+  --kds-background: #ffffff;
+  --kds-background-subtle: #f9f9f9;
+  --kds-background-soft: rgba(29, 29, 29, 0.04);
+  --kds-background-muted: rgba(29, 29, 29, 0.02);
+  --kds-background-hover: rgba(29, 29, 29, 0.02);
+  --kds-background-bullet-layer: #ffffff;
+  --kds-background-tooltip: #2d2d2f;
+  --kds-background-toast: #2d2d2f;
+  --kds-background-fixed-dark: #121212;
+  --kds-background-fixed-light: #ffffff;
+  --kds-background-mask: rgba(0, 13, 29, 0.3);
+  --kds-background-mask-strong: rgba(255, 255, 255, 0.7);
+  --kds-text-primary: #1d1d1d;
+  --kds-text-secondary: rgba(29, 29, 29, 0.6);
+  --kds-text-tertiary: rgba(29, 29, 29, 0.48);
+  --kds-text-quaternary: rgba(29, 29, 29, 0.3);
+  --kds-text-disabled: rgba(29, 29, 29, 0.2);
+  --kds-text-fixed-dark: #1d1d1d;
+  --kds-text-fixed-light: #ffffff;
+  --kds-text-link: #00b47d;
+  --kds-text-link-neutral: #1d1d1d;
+  --kds-neutral: 29, 29, 29;
+  --kds-brandgreen: 0, 180, 125;
+  --kds-brandred: 246, 84, 84;
+  --kds-web3green: 12, 195, 114;
+  --kds-vip: 195, 152, 59;
+  --kds-vip-subtle: 222, 190, 121;
+  --kds-vip-soft: rgba(195, 152, 59, 0.08);
+  --kds-success: 0, 180, 125;
+  --kds-success-subtle: rgba(0, 180, 125, 0.08);
+  --kds-error: 246, 84, 84;
+  --kds-error-subtle: rgba(246, 84, 84, 0.08);
+  --kds-warning: 248, 178, 0;
+  --kds-warning-subtle: rgba(248, 178, 0, 0.08);
+  --kds-info: rgba(29, 29, 29, 0.6);
+  --kds-info-subtle: rgba(35, 82, 106, 0.04);
+  --kds-border: rgba(29, 29, 29, 0.08);
+  --kds-border-emphasis: #1d1d1d;
+  --kds-divider: rgba(29, 29, 29, 0.08);
+  --kds-divider-subtle: rgba(29, 29, 29, 0.04);
+  --kds-divider-info: rgba(29, 29, 29, 0.2);
+  --kds-divider-block: #f9f9f9;
+  --kds-yellowgreen: 211, 244, 117;
+  --kds-lightgreen: 37, 209, 127;
+  --kds-babyblue: 60, 194, 251;
+  --kds-yellow: 248, 178, 0;
+  --kds-purple: 143, 88, 245;
+  --kds-inverse: 255, 255, 255;
+}
+
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --kds-background: #121212;
+  --kds-background-subtle: #121212;
+  --kds-background-soft: rgba(243, 243, 243, 0.08);
+  --kds-background-muted: rgba(243, 243, 243, 0.04);
+  --kds-background-hover: rgba(243, 243, 243, 0.04);
+  --kds-background-bullet-layer: #222223;
+  --kds-background-tooltip: #2d2d2f;
+  --kds-background-toast: #ffffff;
+  --kds-background-fixed-dark: #121212;
+  --kds-background-fixed-light: #ffffff;
+  --kds-background-mask: rgba(0, 0, 0, 0.6);
+  --kds-background-mask-strong: rgba(18, 18, 18, 0.7);
+  --kds-text-primary: #f3f3f3;
+  --kds-text-secondary: rgba(243, 243, 243, 0.6);
+  --kds-text-tertiary: rgba(243, 243, 243, 0.48);
+  --kds-text-quaternary: rgba(243, 243, 243, 0.3);
+  --kds-text-disabled: rgba(243, 243, 243, 0.2);
+  --kds-text-fixed-dark: #1d1d1d;
+  --kds-text-fixed-light: #ffffff;
+  --kds-text-link: #00b47d;
+  --kds-text-link-neutral: #f3f3f3;
+  --kds-neutral: 243, 243, 243;
+  --kds-brandgreen: 0, 180, 125;
+  --kds-brandred: 246, 84, 84;
+  --kds-web3green: 12, 195, 114;
+  --kds-vip: 245, 209, 134;
+  --kds-vip-subtle: 246, 224, 176;
+  --kds-vip-soft: rgba(245, 209, 134, 0.08);
+  --kds-success: 0, 180, 125;
+  --kds-success-subtle: rgba(0, 180, 125, 0.08);
+  --kds-error: 246, 84, 84;
+  --kds-error-subtle: rgba(246, 84, 84, 0.08);
+  --kds-warning: 248, 178, 0;
+  --kds-warning-subtle: rgba(248, 178, 0, 0.08);
+  --kds-info: rgba(243, 243, 243, 0.6);
+  --kds-info-subtle: rgba(243, 243, 243, 0.08);
+  --kds-border: rgba(243, 243, 243, 0.12);
+  --kds-border-emphasis: #f3f3f3;
+  --kds-divider: rgba(243, 243, 243, 0.08);
+  --kds-divider-subtle: rgba(243, 243, 243, 0.04);
+  --kds-divider-info: rgba(243, 243, 243, 0.2);
+  --kds-divider-block: #000000;
+  --kds-yellowgreen: 211, 244, 117;
+  --kds-lightgreen: 37, 209, 127;
+  --kds-babyblue: 60, 194, 251;
+  --kds-yellow: 248, 178, 0;
+  --kds-purple: 143, 88, 245;
+  --kds-inverse: 29, 29, 29;
+}
+
+@theme {
+  /* for Custom variables */
+  /* --color-kds-background: #121212; */
+}

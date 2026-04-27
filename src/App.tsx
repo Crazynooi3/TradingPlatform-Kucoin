@@ -6,14 +6,13 @@ import { selectThemeMode } from "./features/Theme/theme.selectors";
 
 function App() {
   const themeMode = useAppSelector(selectThemeMode);
-  console.log(themeMode);
 
-  const theme: string = "light";
+  // const theme: string = "light";
   // const theme: string = "dark";
 
   return (
-    <ConfigProvider theme={theme === "dark" ? darkTheme : lightTheme}>
-      <div className={theme}>
+    <ConfigProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
+      <div className={themeMode}>
         <Router />
       </div>
     </ConfigProvider>

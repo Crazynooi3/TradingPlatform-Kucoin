@@ -1,12 +1,23 @@
+import { useAppDispatch, useAppSelector } from "@/app/Redux/hooks";
+import { selectThemeMode } from "@/features/Theme/theme.selectors";
+import { toggleTheme } from "@/features/Theme/theme.slice";
 import {
   CaretDownOutlined,
   DownloadOutlined,
   GlobalOutlined,
+  MoonOutlined,
   SearchOutlined,
+  SunOutlined,
 } from "@ant-design/icons";
 import { Button, Divider, Space } from "antd";
 
 export default function Header() {
+  const dispatch = useAppDispatch();
+  const themeMode = useAppSelector(selectThemeMode);
+
+  const changeTheme = () => {
+    dispatch(toggleTheme());
+  };
   return (
     <header>
       <div className="sticky-top flex h-18 items-center border-b border-(--kds-border) bg-(--kds-background) px-6">
@@ -46,7 +57,7 @@ export default function Header() {
         </div>
         <div className="flex h-full items-center">
           <Space separator={<Divider vertical className="h-6" />}>
-            <div>
+            <div className="flex items-center gap-2">
               <Button
                 href="/auth/login"
                 type="text"
@@ -69,11 +80,19 @@ export default function Header() {
               <Button shape="circle" icon={<SearchOutlined />}></Button>
               <Button shape="circle" icon={<DownloadOutlined />}></Button>
               <Button shape="circle" icon={<GlobalOutlined />}></Button>
-              {/* {themeMode === "dark" ? (
-                <Button onClick={() => changeTheme()} shape="circle" icon={<SunOutlined />}></Button>
+              {themeMode === "dark" ? (
+                <Button
+                  onClick={() => changeTheme()}
+                  shape="circle"
+                  icon={<SunOutlined />}
+                ></Button>
               ) : (
-                <Button onClick={() => changeTheme()} shape="circle" icon={<MoonOutlined />}></Button>
-              )} */}
+                <Button
+                  onClick={() => changeTheme()}
+                  shape="circle"
+                  icon={<MoonOutlined />}
+                ></Button>
+              )}
             </div>
           </Space>
         </div>

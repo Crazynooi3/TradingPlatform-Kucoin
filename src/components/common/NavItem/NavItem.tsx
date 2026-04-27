@@ -13,12 +13,14 @@ export default function NavItem({
     <li className="relative">
       <button
         onClick={() => onToggle(itemKey)}
-        className="flex items-center gap-1 font-medium text-(--kds-text-primary) transition-colors hover:text-(--kds-primary)"
+        className="flex cursor-pointer items-center gap-1 font-medium text-(--kds-text-primary) transition-colors"
       >
-        {label}
+        <span className="transition-colors hover:text-(--kds-text-link)">
+          {label}
+        </span>
         {dropdown && (
           <CaretDownOutlined
-            className={`text-gray-400 transition-transform duration-200 ${isOpen ? "rotate-180" : "rotate-0"} `}
+            className={`text-xs transition-transform duration-200 ${isOpen ? "rotate-180" : "rotate-0"} `}
           />
         )}
       </button>

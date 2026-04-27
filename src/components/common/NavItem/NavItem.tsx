@@ -10,7 +10,7 @@ export default function NavItem({
   dropdown,
 }: NavItemProps) {
   return (
-    <li className="relative">
+    <li className="">
       <button
         onClick={() => onToggle(itemKey)}
         className="flex cursor-pointer items-center gap-1 font-medium text-(--kds-text-primary) transition-colors"
@@ -27,7 +27,7 @@ export default function NavItem({
 
       {/* Dropdown Portal */}
       {dropdown && isOpen && (
-        <div className="absolute top-full left-0 z-50 mt-2">{dropdown}</div>
+        <div className="absolute top-18 left-0 z-50 w-full">{dropdown}</div>
       )}
     </li>
   );

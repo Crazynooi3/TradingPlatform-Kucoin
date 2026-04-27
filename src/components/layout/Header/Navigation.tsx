@@ -1,5 +1,5 @@
 // Navigation.tsx
-import BuyCryptoDropdown from "@/components/common/dropDowns/BuyCryptoDropdown";
+import BuyCryptoDropdown from "@/components/common/dropDowns/BuyCryptoDropdown/BuyCryptoDropdown";
 import NavItem from "@/components/common/NavItem/NavItem";
 import { useNavDropdown } from "@/hooks/useNavDropdown";
 

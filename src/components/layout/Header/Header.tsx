@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from "@/app/Redux/hooks";
 import { selectThemeMode } from "@/features/Theme/theme.selectors";
 import { toggleTheme } from "@/features/Theme/theme.slice";
 import {
-  CaretDownOutlined,
   DownloadOutlined,
   GlobalOutlined,
   MoonOutlined,
@@ -10,6 +9,7 @@ import {
   SunOutlined,
 } from "@ant-design/icons";
 import { Button, Divider, Space } from "antd";
+import Navigation from "./Navigation";
 
 export default function Header() {
   const dispatch = useAppDispatch();
@@ -29,30 +29,7 @@ export default function Header() {
         />
         <div className="flex-1">
           <ul className="flex h-full items-center gap-5 font-medium text-(--kds-text-primary)">
-            <li>
-              {" "}
-              Buy Crypto <CaretDownOutlined className="text-gray-400" />{" "}
-            </li>
-            <li>
-              {" "}
-              Market <CaretDownOutlined className="text-gray-400" />{" "}
-            </li>
-            <li>
-              {" "}
-              Trade <CaretDownOutlined className="text-gray-400" />{" "}
-            </li>
-            <li>
-              {" "}
-              Derivatives <CaretDownOutlined className="text-gray-400" />{" "}
-            </li>
-            <li>
-              {" "}
-              Earn <CaretDownOutlined className="text-gray-400" />{" "}
-            </li>
-            <li>
-              {" "}
-              More ... <CaretDownOutlined className="text-gray-400" />{" "}
-            </li>
+            <Navigation />
           </ul>
         </div>
         <div className="flex h-full items-center">

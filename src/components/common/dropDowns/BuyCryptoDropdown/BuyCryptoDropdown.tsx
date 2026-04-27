@@ -1,11 +1,12 @@
 import { Button } from "antd";
 import { DropdownItems } from "./DropdownItems";
 import { DROPDOWN_BuyCrypto_ITEMS } from "./DropdownList";
+import kucard from "@/assets/images/Kucard.png";
 
 export default function BuyCryptoDropdown() {
   return (
     <div className="flex h-115 items-center justify-center bg-(--kds-background) p-4 shadow-lg">
-      <div className="p-10 will-change-auto">
+      <div className="p-4 will-change-auto">
         <h2 className="mb-5 text-xl font-bold">Buy Crypto</h2>
         <p className="text-sm font-normal text-(--kds-text-secondary)">
           Buy instantly using Visa, MasterCard, bank transfers and more
@@ -21,9 +22,9 @@ export default function BuyCryptoDropdown() {
           <span className="text-lg font-bold">Trade Now</span>
         </Button>
       </div>
-      <div className="h-full border-r border-l border-(--kds-border)">
+      <div className="h-full border-r border-l border-(--kds-border) p-4">
         <div>
-          <div className="mb-2 flex flex-col p-4">
+          <div className="mb-2 flex flex-col">
             <div className="text-tertiary py-4 ps-4 pt-0 pb-2 text-base leading-[140%] font-medium first:[&]:pt-0">
               Buy Crypto
             </div>
@@ -35,13 +36,30 @@ export default function BuyCryptoDropdown() {
                 icon={item.icon}
               />
             ))}
-            <div></div>
-            <div></div>
           </div>
         </div>
-        <div></div>
       </div>
-      <div>3</div>
+      <div className="p-4">
+        <div className="py-4 pt-0 pb-2 text-base leading-[140%] font-medium text-(--kds-text-tertiary) first:[&]:pt-0">
+          Spend Crypto
+        </div>
+        <div className="mt-6 flex w-full items-center justify-center">
+          <img
+            className="aspect-4/3 rounded-xl"
+            src={kucard}
+            alt="kucard"
+            width={"300px"}
+          />
+        </div>
+        <div className="max-w-100">
+          <div className="mt-6 text-base leading-[140%] font-normal">
+            KuCard
+          </div>
+          <div className="mt-1 text-sm text-(--kds-text-tertiary)">
+            Use KuCard to pay and get cashbacks
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

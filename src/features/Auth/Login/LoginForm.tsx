@@ -1,11 +1,18 @@
+import { useAppDispatch, useAppSelector } from "@/app/Redux/hooks";
+import { fetchUserInfo } from "@/features/User/user.slice";
 import { Button, Input, message, Tooltip } from "antd";
 import { useFormik } from "formik";
 import { emailValidator, tokenValidator } from "./loginValidator";
+import { userSelector } from "@/features/User/user.selector";
 
 interface LoginFormProps {
   activeTab: string;
 }
 export default function LoginForm({ activeTab }: LoginFormProps) {
+  const user = useAppSelector(userSelector);
+  console.log("user:", user);
+
+  const dispatch = useAppDispatch();
   const isEmailTab = activeTab === "Email";
 
   const formik = useFormik({
@@ -14,24 +21,26 @@ export default function LoginForm({ activeTab }: LoginFormProps) {
     validateOnChange: true,
     validateOnBlur: true,
     enableReinitialize: true,
-    onSubmit: (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting }) => {
       try {
-        console.log("Login submitted with:", values);
-        console.log("Active Tab:", activeTab);
-
         if (activeTab === "Email") {
-          message.warning(
-            "We cannot login with Email/Phone yet. Please use Token method.",
-          );
-        } else if (activeTab === "Token") {
-          message.info("Token login will be implemented soon");
+          message.warning("Please use Token method.");
+          return;
         }
 
-        // اگر لاگین موفق بود:
-        // navigate("/dashboard", { replace: true });
+        if (activeTab === "Token") {
+          const result = await dispatch(fetchUserInfo(values.identifier));
+
+          if (fetchUserInfo.fulfilled.match(result)) {
+            message.success("Login successful!");
+            localStorage.setItem("token", values.identifier);
+            // navigate("/dashboard");
+          } else {
+            message.error(result.payload || "Login failed");
+          }
+        }
       } catch (error: any) {
-        console.error("Login error:", error);
-        message.error(error?.message || "Login failed. Please try again.");
+        message.error(error?.message || "Login failed");
       } finally {
         setSubmitting(false);
       }

@@ -1,8 +1,8 @@
 // app/api/endpoints.ts
 export const ENDPOINTS = {
   auth: {
-    loginWithToken: "/auth/login/token",
-    loginWithEmail: "/auth/login/email",
+    loginWithToken: "/v1/user",
+    loginWithEmail: "/v1/user",
     logout: "/auth/logout",
     refresh: "/auth/refresh",
   },

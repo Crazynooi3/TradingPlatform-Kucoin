@@ -4,7 +4,8 @@ import { message } from "antd";
 
 export function attachResponseInterceptor(instance: AxiosInstance) {
   instance.interceptors.response.use(
-    (response) => response.data,
+    // response.interceptor.ts
+    (response) => response.data?.data ?? response.data,
     (error) => {
       const status = error.response?.status;
 

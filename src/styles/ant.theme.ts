@@ -128,9 +128,10 @@ const sharedComponents: ThemeConfig["components"] = {
     itemActiveBg: "var(--kds-background-soft)",
     subMenuItemBg: "transparent",
     colorActiveBarBorderSize: 2,
-    // colorActiveBarColor: "#00B47D",
-    itemBorderRadius: 6,
+    itemBorderRadius: 24,
     borderRadius: 6,
+    itemMarginBlock: 12,
+    itemHeight: 48,
   },
 
   Tabs: {
@@ -280,7 +281,7 @@ const sharedComponents: ThemeConfig["components"] = {
     headerHeight: 60,
     footerBg: "var(--kds-background)",
     footerPadding: "16px 24px",
-    siderBg: "var(--kds-background-subtle)",
+    siderBg: "var(--kds-background-bullet-layer)",
     bodyBg: "var(--kds-background)",
     lightSiderBg: "var(--kds-background)",
     lightTriggerBg: "var(--kds-background-soft)",

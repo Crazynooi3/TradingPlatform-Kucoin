@@ -34,7 +34,7 @@ export default function LoginForm({ activeTab }: LoginFormProps) {
           if (fetchUserInfo.fulfilled.match(result)) {
             message.success("Login successful!");
             localStorage.setItem("token", values.identifier);
-            navigate("/dashboard");
+            navigate("/account/dashboard");
           } else {
             message.error(result.payload || "Login failed");
           }

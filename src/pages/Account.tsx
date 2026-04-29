@@ -13,7 +13,7 @@ export default function Account() {
         selectedKey={selectedKey}
         onSelect={(key) => navigate(`/account/${key}`)}
       />
-      <div className="flex-1 p-6">
+      <div className="flex-1 px-16 py-10">
         <Outlet /> {/* ← زیرصفحه‌ها اینجا render میشن */}
       </div>
     </main>

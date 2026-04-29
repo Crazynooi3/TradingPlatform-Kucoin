@@ -54,6 +54,7 @@
   --kds-yellow: 248, 178, 0;
   --kds-purple: 143, 88, 245;
   --kds-inverse: 255, 255, 255;
+  --kux-cover2: rgba(29, 29, 29, 0.02);
 }
 
 .dark,
@@ -87,7 +88,7 @@
   --kds-vip: 245, 209, 134;
   --kds-vip-subtle: 246, 224, 176;
   --kds-vip-soft: rgba(245, 209, 134, 0.08);
-  --kds-success: 0, 180, 125;
+  --kds-success: rgb(0, 180, 125);
   --kds-success-subtle: rgba(0, 180, 125, 0.08);
   --kds-error: 246, 84, 84;
   --kds-error-subtle: rgba(246, 84, 84, 0.08);
@@ -107,6 +108,7 @@
   --kds-yellow: 248, 178, 0;
   --kds-purple: 143, 88, 245;
   --kds-inverse: 29, 29, 29;
+  --kux-cover2: rgba(243, 243, 243, 0.02);
 }
 
 @theme {

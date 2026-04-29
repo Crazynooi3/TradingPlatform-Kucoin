@@ -1,16 +1,16 @@
-import { useAppDispatch, useAppSelector } from "@/app/Redux/hooks";
+import { useAppDispatch } from "@/app/Redux/hooks";
 import { fetchUserInfo } from "@/features/User/user.slice";
 import { Button, Input, message, Tooltip } from "antd";
 import { useFormik } from "formik";
 import { emailValidator, tokenValidator } from "./loginValidator";
-import { userSelector } from "@/features/User/user.selector";
+import { useNavigate } from "react-router-dom";
 
 interface LoginFormProps {
   activeTab: string;
 }
 export default function LoginForm({ activeTab }: LoginFormProps) {
-  const user = useAppSelector(userSelector);
-  console.log("user:", user);
+  // const user = useAppSelector(userSelector);
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   const isEmailTab = activeTab === "Email";
@@ -34,7 +34,7 @@ export default function LoginForm({ activeTab }: LoginFormProps) {
           if (fetchUserInfo.fulfilled.match(result)) {
             message.success("Login successful!");
             localStorage.setItem("token", values.identifier);
-            // navigate("/dashboard");
+            navigate("/dashboard");
           } else {
             message.error(result.payload || "Login failed");
           }

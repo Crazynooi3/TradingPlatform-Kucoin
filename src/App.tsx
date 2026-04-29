@@ -10,9 +10,6 @@ function App() {
   const dispatch = useAppDispatch();
   const themeMode = useAppSelector(selectThemeMode);
 
-  // const theme: string = "light";
-  // const theme: string = "dark";
-
   useEffect(() => {
     dispatch(rehydrateUser());
   }, []);

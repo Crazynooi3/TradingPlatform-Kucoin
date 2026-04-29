@@ -3,15 +3,11 @@ import AssetDashbord from "@/components/common/DashbordComp/Asset.dashbord";
 import Onboarding from "@/components/common/DashbordComp/Onboarding.dashboard";
 import { userSelector } from "@/features/User/user.selector";
 import {
-  CaretDownOutlined,
   CheckCircleFilled,
-  CheckCircleOutlined,
   EditOutlined,
-  EyeOutlined,
   RightOutlined,
   SafetyCertificateFilled,
 } from "@ant-design/icons";
-import { Button, Divider, Space } from "antd";
 
 export default function Dashboard() {
   const userInfo = useAppSelector(userSelector);

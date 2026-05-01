@@ -90,7 +90,7 @@
   --kds-vip-soft: rgba(245, 209, 134, 0.08);
   --kds-success: rgb(0, 180, 125);
   --kds-success-subtle: rgba(0, 180, 125, 0.08);
-  --kds-error: 246, 84, 84;
+  --kds-error: rgb(246, 84, 84);
   --kds-error-subtle: rgba(246, 84, 84, 0.08);
   --kds-warning: 248, 178, 0;
   --kds-warning-subtle: rgba(248, 178, 0, 0.08);

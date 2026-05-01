@@ -1,8 +1,7 @@
-import { useAppDispatch, useAppSelector } from "@/app/Redux/hooks";
+import { useAppSelector } from "@/app/Redux/hooks";
 import AssetDashbord from "@/components/common/DashbordComp/Asset.dashbord";
+import MarketTableDashboard from "@/components/common/DashbordComp/marketTable.dashboard";
 import Onboarding from "@/components/common/DashbordComp/Onboarding.dashboard";
-import { marketSelector } from "@/features/Market/market.selector";
-import { fetchMarkets } from "@/features/Market/market.slice";
 import { userSelector } from "@/features/User/user.selector";
 import {
   CheckCircleFilled,
@@ -10,32 +9,9 @@ import {
   RightOutlined,
   SafetyCertificateFilled,
 } from "@ant-design/icons";
-import { Button, Tabs, TabsProps } from "antd";
-import { useEffect, useState } from "react";
-
-const items: TabsProps["items"] = [
-  { key: "Faverites", label: "Faverites" },
-  { key: "Tranding", label: "Tranding" },
-  { key: "New_Listing", label: "New Listing" },
-  { key: "Top_Gainer", label: "Top Gainer" },
-  { key: "Volume", label: "Volume" },
-];
 
 export default function Dashboard() {
-  const dispatch = useAppDispatch();
-  const markets = useAppSelector(marketSelector);
-  console.log(markets);
-
-  useEffect(() => {
-    dispatch(fetchMarkets());
-  }, []);
-
   const userInfo = useAppSelector(userSelector);
-  const [activeTab, setActiveTab] = useState("Faverites");
-
-  const changeTab = (activeKey: string) => {
-    setActiveTab(activeKey);
-  };
 
   return (
     <>
@@ -106,46 +82,7 @@ export default function Dashboard() {
       <div className="flex flex-col gap-5 text-(--kds-text-primary)">
         <Onboarding />
         <AssetDashbord />
-        <div className="rounded-2xl border border-(--kds-border) p-5">
-          <div className="flex items-center justify-between">
-            <span>Market</span>
-            <span className="flex items-center gap-4 text-sm text-(--kds-text-secondary)">
-              <span>View More</span>
-              <span>|</span>
-              <span>Help</span>
-            </span>
-          </div>
-
-          <div className="w-1/2">
-            <Tabs
-              onChange={(activeKey) => changeTab(activeKey)}
-              items={items}
-              defaultActiveKey="Email"
-              indicator={{ size: (origin) => origin - 20, align: "center" }}
-              className="text-lg font-bold"
-            />
-            <div className="flex gap-4">
-              <Button
-                style={{ fontSize: "12px" }}
-                size="small"
-                color="default"
-                variant="filled"
-                className="text-xs"
-              >
-                Spot
-              </Button>
-              <Button
-                style={{ fontSize: "12px" }}
-                size="small"
-                color="default"
-                variant="filled"
-                className="text-xs"
-              >
-                Futeure
-              </Button>
-            </div>
-          </div>
-        </div>
+        <MarketTableDashboard />
       </div>
       <div className="flex-1/3">2</div>
     </>

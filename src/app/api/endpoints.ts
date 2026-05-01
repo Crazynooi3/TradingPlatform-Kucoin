@@ -7,7 +7,7 @@ export const ENDPOINTS = {
     refresh: "/auth/refresh",
   },
   market: {
-    list: "/v2/market",
+    list: "/v1/market",
     detail: (symbol: string) => `/market/${symbol}`,
   },
   user: {

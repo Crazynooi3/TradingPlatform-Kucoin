@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import themeReducer from "@/features/Theme/theme.slice";
 import userReducer from "@/features/User/user.slice";
 import walletReducer from "@/features/Wallet/wallet.slice";
+import marketsReducer from "@/features/Market/market.slice";
 
 export const store = configureStore({
   reducer: {
     themeMode: themeReducer,
     user: userReducer,
     userWallets: walletReducer,
+    markets: marketsReducer,
   },
 });
 

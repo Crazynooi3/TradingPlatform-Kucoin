@@ -7,14 +7,14 @@ export const ENDPOINTS = {
     refresh: "/auth/refresh",
   },
   market: {
-    list: "/market",
+    list: "/v2/market",
     detail: (symbol: string) => `/market/${symbol}`,
   },
   user: {
     profile: "/user/profile",
     mainWallet: "/v1/user/wallet",
-    robotWallet : '/v1/user/sub-account/wallet?type=robot',
-    marginWallet : '/v1/user/sub-account/wallet?type=margin',
-    cardWallet : '/v1/user/sub-account/wallet?type=card'
+    robotWallet: "/v1/user/sub-account/wallet?type=robot",
+    marginWallet: "/v1/user/sub-account/wallet?type=margin",
+    cardWallet: "/v1/user/sub-account/wallet?type=card",
   },
 } as const;

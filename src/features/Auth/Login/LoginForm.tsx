@@ -2,8 +2,8 @@ import { useAppDispatch } from "@/app/Redux/hooks";
 import { fetchUserInfo } from "@/features/User/user.slice";
 import { Button, Input, message, Tooltip } from "antd";
 import { useFormik } from "formik";
-import { emailValidator, tokenValidator } from "./loginValidator";
 import { useNavigate } from "react-router-dom";
+import { emailValidator, tokenValidator } from "./loginValidator";
 
 interface LoginFormProps {
   activeTab: string;

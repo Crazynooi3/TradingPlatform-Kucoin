@@ -1,9 +1,12 @@
+import { useAppDispatch, useAppSelector } from "@/app/Redux/hooks";
 import OmpfinexLogin from "@/assets/images/OmpfinexLogin.png";
 import LoginForm from "@/features/Auth/Login/LoginForm";
+import { userSelector } from "@/features/User/user.selector";
+import { fetchUserInfo } from "@/features/User/user.slice";
 import { UserOutlined } from "@ant-design/icons";
 import { Button, Divider, Tabs, TabsProps } from "antd";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const items: TabsProps["items"] = [
   { key: "Email", label: "Email/Phone Number" },
@@ -11,11 +14,30 @@ const items: TabsProps["items"] = [
 ];
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const userInfo = useAppSelector(userSelector);
+
   const [activeTab, setActiveTab] = useState("Email");
 
   const changeTab = (activeKey: string) => {
     setActiveTab(activeKey);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    dispatch(fetchUserInfo(token)).then((result) => {
+      if (fetchUserInfo.fulfilled.match(result)) {
+        navigate("/account/dashboard", { replace: true });
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    if (userInfo) navigate("/account/dashboard", { replace: true });
+  }, [userInfo]);
 
   return (
     <div className="flex h-dvh w-full overflow-hidden">

@@ -1,16 +1,26 @@
-import { useAppSelector } from "@/app/Redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/Redux/hooks";
 import AssetDashbord from "@/components/common/DashbordComp/Asset.dashbord";
 import Onboarding from "@/components/common/DashbordComp/Onboarding.dashboard";
 import { userSelector } from "@/features/User/user.selector";
+import { walletsSelector } from "@/features/Wallet/walle.selector";
+import { fetchMainWallet } from "@/features/Wallet/wallet.slice";
 import {
   CheckCircleFilled,
   EditOutlined,
   RightOutlined,
   SafetyCertificateFilled,
 } from "@ant-design/icons";
+import { useEffect } from "react";
 
 export default function Dashboard() {
+  const dispatch = useAppDispatch();
   const userInfo = useAppSelector(userSelector);
+  const userWallets = useAppSelector(walletsSelector);
+
+  useEffect(() => {
+    dispatch(fetchMainWallet());
+  }, []);
+
   return (
     <>
       <div className="flex items-center justify-evenly text-(--kds-text-primary)">

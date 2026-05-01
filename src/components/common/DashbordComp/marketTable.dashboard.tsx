@@ -3,6 +3,9 @@ import { marketSelector } from "@/features/Market/market.selector";
 import { fetchMarkets } from "@/features/Market/market.slice";
 import { Button, Table, Tabs, TabsProps } from "antd";
 import { useEffect, useState } from "react";
+import Decimal from "decimal.js";
+// @ts-ignore
+import toFormat from "toformat";
 
 const items: TabsProps["items"] = [
   { key: "Faverites", label: "Faverites" },
@@ -10,41 +13,6 @@ const items: TabsProps["items"] = [
   { key: "New_Listing", label: "New Listing" },
   { key: "Top_Gainer", label: "Top Gainer" },
   { key: "Volume", label: "Volume" },
-];
-
-const dataSource = [
-  {
-    key: "1",
-    Pair: "BTC/USDT",
-    Price: "3654762345",
-    h24_Change: "364536",
-    h4_Trend: "7676786",
-    Action: "Trade",
-  },
-  {
-    key: "2",
-    Pair: "ADA/USDT",
-    Price: "3654762345",
-    h24_Change: "364536",
-    h4_Trend: "7676786",
-    Action: "Trade",
-  },
-  {
-    key: "3",
-    Pair: "XRP/USDT",
-    Price: "3654762345",
-    h24_Change: "364536",
-    h4_Trend: "7676786",
-    Action: "Trade",
-  },
-  {
-    key: "4",
-    Pair: "ETH/USDT",
-    Price: "3654762345",
-    h24_Change: "364536",
-    h4_Trend: "7676786",
-    Action: "Trade",
-  },
 ];
 
 const columns = [
@@ -86,8 +54,29 @@ export default function MarketTableDashboard() {
   const [activeTab, setActiveTab] = useState("Faverites");
 
   const dispatch = useAppDispatch();
-  const markets = useAppSelector(marketSelector);
+  const { markets, loading } = useAppSelector(marketSelector);
+  console.log(loading);
+
   console.log(markets);
+
+  const dataSource2 = markets?.map((market) => {
+    const DecimalWithFormat = toFormat(Decimal);
+    const priceNum = new DecimalWithFormat(market.last_price);
+    const price =
+      market.quote_currency.id != "IRR" ? priceNum : priceNum.dividedBy(10);
+    const maxDecimal = Math.max(
+      market.base_currency.decimal_precision,
+      market.quote_currency.decimal_precision,
+    );
+
+    return {
+      key: market.id,
+      Pair: `${market.base_currency.id} / ${market.quote_currency.id}`,
+      Price: price.toFormat(),
+      h24_Change: market.day_change_percent,
+      h4_Trend: "767",
+    };
+  });
 
   const changeTab = (activeKey: string) => {
     setActiveTab(activeKey);
@@ -138,7 +127,13 @@ export default function MarketTableDashboard() {
       </div>
 
       <div>
-        <Table dataSource={dataSource} columns={columns} rowClassName="h-24" />
+        <Table
+          className="mt-5"
+          dataSource={dataSource2}
+          columns={columns}
+          rowClassName="h-24"
+          loading={loading}
+        />
       </div>
     </div>
   );

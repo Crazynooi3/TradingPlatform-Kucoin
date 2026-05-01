@@ -9,8 +9,8 @@ export interface CurrencyIdType {
 
 export interface MartekType {
   id: string;
-  baseCurrencyId: CurrencyIdType;
-  quoteCurrencyId: CurrencyIdType;
+  base_currency: CurrencyIdType;
+  quote_currency: CurrencyIdType;
   name: string;
   baseCurrencyPrecision: number;
   quoteCurrencyPrecision: number;

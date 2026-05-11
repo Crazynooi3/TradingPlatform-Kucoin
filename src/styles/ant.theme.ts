@@ -108,7 +108,7 @@ const sharedComponents: ThemeConfig["components"] = {
   },
 
   Dropdown: {
-    colorBgElevated: "var(--kds-background)",
+    colorBgElevated: "var(--kds-background-tooltip)",
     colorText: "var(--kds-text-primary)",
     colorTextDisabled: "var(--kds-text-disabled)",
     controlItemBgHover: "var(--kds-background-hover)",

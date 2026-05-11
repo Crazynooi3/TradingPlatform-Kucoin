@@ -1,7 +1,7 @@
 import { Button } from "antd";
 import { DropdownItems } from "./DropdownItems";
-import { DROPDOWN_BuyCrypto_ITEMS } from "./DropdownList";
 import kucard from "@/assets/images/Kucard.png";
+import { DROPDOWN_BuyCrypto_ITEMS } from "./DropdownList";
 
 export default function BuyCryptoDropdown() {
   return (

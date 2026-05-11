@@ -2,7 +2,7 @@
 export interface NavItemProps {
   label: string;
   itemKey: string;
-  isOpen: boolean;
+  isOpen?: boolean;
   onToggle: (key: string) => void;
   dropdown?: React.ReactNode;
 }
